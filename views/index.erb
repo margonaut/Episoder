@@ -1,9 +1,7 @@
-<main>
-  <h2>Suggested Shows:</h2>
-  <hr />
-  <div class="link_block">
-    <% suggested_shows.each do |show| %>
-    <a href="/show/<%= show[:url]  %>"><%= show[:name]  %></a>
-    <% end %>
-  </div>
-</main>
+<h2>Suggested Shows:</h2>
+<hr />
+<div class="link_block">
+  <% suggested_shows.each do |show| %>
+  <a href="/show/<%= show[:url]  %>"><%= show[:name]  %></a>
+  <% end %>
+</div>

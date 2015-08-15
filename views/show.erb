@@ -1,8 +1,6 @@
-<main>
-  <% episode_list.each do |episode| %>
-  <div class="episode">
-    <div class="episode_header"><h2 class="title"><%= episode.title %></h2><div class="number">Episode <%= episode.number %></div></div>
-    <div class="description"><%= episode.description %></div>
-  </div>
-  <% end %>
-</main>
+<% episode_list.each do |episode| %>
+<div class="episode">
+  <div class="episode_header"><h2 class="title"><%= episode.title %></h2><div class="number">Episode <%= episode.number %></div></div>
+  <div class="description"><%= episode.description %></div>
+</div>
+<% end %>

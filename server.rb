@@ -1,8 +1,6 @@
-require "pry"
 require 'sinatra'
 require 'nokogiri'
 require 'open-uri'
-
 
 class Episode
   attr_reader :title, :number, :description
@@ -13,7 +11,7 @@ class Episode
   end
 end
 
-# Methods to assist in and populate an array of Episodes objects
+# Methods to assist in populating an array of Episodes objects
 
 def is_i?(string)
        /\A[-+]?\d+\z/ === string
@@ -26,11 +24,9 @@ def find_description(episode)
   if description.nil?
     description = "SOMETHING WEIRD IS HAPPENING HERE"
   end
-  # binding.pry
   if is_i?(description[1])
     description = ""
   end
-  # binding.pry
   unless description.include? "TBA"
     description
   end

@@ -9,7 +9,6 @@
   overflow: hidden;
 }
 
-
 /*****************Basic Styling****************************/
 
 html {
@@ -18,8 +17,7 @@ html {
 }
 
 h1 {
-  color: red;
-  font-size: 2.3em;
+  font-size: 2.5em;
   color: #E865D0;
 }
 
@@ -36,7 +34,6 @@ hr {
   margin: 0 0 10px 0;
   border: 2px solid #E865D0;
   border-radius: 2px;
-
 }
 
 .title {
@@ -46,7 +43,6 @@ hr {
   font-weight: 600;
 }
 
-
 /****************Page Header*****************************/
 
 .header {
@@ -55,22 +51,14 @@ hr {
 
 /***************Episode Elements******************************/
 
-.main {
-}
-
 .episode {
   margin-bottom: 15px;
 }
 
 .episode_header {
-  /*display: block;*/
   overflow: hidden;
   margin-bottom: 5px;
 }
-
-
-/*.title {
-}*/
 
 .number {
   float: right;
@@ -78,16 +66,12 @@ hr {
 }
 
 .description {
-  /*diplay: block;*/
   text-align: justify;
-
 }
 
 input {
   font-size: 1em;
   padding:8px;
-
-
 }
 
 input[type="submit"] {
@@ -95,7 +79,11 @@ input[type="submit"] {
   border: 0;
   color: #FFF;
   padding: 9px;
+  border-radius: 2px;
 }
+
+/****************Homepage Content*****************************/
+
 
 .link_block {
   font-size: 1.2em;
@@ -112,11 +100,6 @@ input[type="submit"] {
   content: "|";
 }
 
-/*ul li:first-child::before {
-  content: "";
-}*/
-
-
 .link_block a:hover {
   color: #E865D0;
 }
@@ -129,6 +112,7 @@ footer {
   padding: 10px;
   color: #FFF;
   border-radius: 3px;
+  text-align: center;
 }
 
 /**************Fixes*******************************/
@@ -152,5 +136,3 @@ footer {
 .clearfix {
   *zoom: 1;
 }
-
-/*********************************************/
