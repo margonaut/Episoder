@@ -68,4 +68,4 @@ puts episode_list.count
 #   episode_list << new_episode
 # end
 
-# puts episode_list[6].description
+puts episode_list[6].description
