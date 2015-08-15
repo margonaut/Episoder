@@ -1,0 +1,12 @@
+<p>And we're live!</p>
+<form action="/show" method="post">
+  <label for="show">What show do you want to see?</label>
+  <input type="text" name="show_name">
+  <input type="submit">
+</form>
+
+<ul>
+<% episode_list.each do |episode| %>
+<li><%= episode.title %></li>
+<% end %>
+</ul>

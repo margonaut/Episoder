@@ -1,8 +1,8 @@
-require 'rubygems'
+# require 'rubygems'
 require 'nokogiri'
 require 'open-uri'
 
-page = Nokogiri::HTML(open("https://en.wikipedia.org/wiki/List_of_Trailer_Park_Boys_episodes"))
+page = Nokogiri::HTML(open("https://en.wikipedia.org/wiki/List_of_Steven_Universe_episodes"))
 
 class Episode
   attr_reader :title, :number, :description
@@ -12,7 +12,7 @@ class Episode
     @description = description
   end
 end
-#
+
 def find_description(episode)
   unless episode.next_element.nil?
     description = episode.next_element.text
@@ -35,12 +35,4 @@ episodes.each do |episode|
   episode_list << new_episode
 end
 
-puts episode_list[0]
-
-
-
-# descriptions = page.css('tr.vevent').first.class
-# puts descriptions
-
-# episodes = page.css('tr.vevent')
-# puts episodes[0]
+puts episode_list[6].description
