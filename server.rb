@@ -42,7 +42,7 @@ def new_show(name)
 end
 
 def suggested_shows
-  shows = ["Steven Universe", "Better Off Ted", "Arrow", "Trailer Park Boys", "Hannibal", "Sherlock", "Twin Peaks"]
+  shows = ["Steven Universe", "Better Off Ted", "Arrow", "Trailer Park Boys", "Hannibal", "Sherlock", "Twin Peaks", "Firefly", "Orphan Black", "Broad City", "Downton Abbey"]
   suggested_shows = []
   shows.each do |show_name|
     show = {}
