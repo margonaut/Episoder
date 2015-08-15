@@ -2,7 +2,29 @@ require 'sinatra'
 require 'nokogiri'
 require 'open-uri'
 
-page = Nokogiri::HTML(open("https://en.wikipedia.org/wiki/List_of_Trailer_Park_Boys_episodes"))
+
+class Episode
+  attr_reader :title, :number, :description
+  def initialize (title, number, description)
+    @title = title
+    @number = number
+    @description = description
+  end
+end
+
+# Methods to assist in and populate an array of Episodes objects
+
+def find_description(episode)
+  unless episode.next_element.nil?
+    description = episode.next_element.text
+  end
+  if description.nil?
+    description = "SOMETHING WEIRD IS HAPPENING HERE"
+  end
+  unless description.include? "TBA"
+    description
+  end
+end
 
 def new_show(name)
   page = Nokogiri::HTML(open("https://en.wikipedia.org/wiki/List_of_#{name}_episodes"))
@@ -18,26 +40,7 @@ def new_show(name)
   return episode_list
 end
 
-class Episode
-  attr_reader :title, :number, :description
-  def initialize (title, number, description)
-    @title = title
-    @number = number
-    @description = description
-  end
-end
-
-def find_description(episode)
-  unless episode.next_element.nil?
-    description = episode.next_element.text
-  end
-  if description.nil?
-    description = "SOMETHING WEIRD IS HAPPENING HERE"
-  end
-  unless description.include? "TBA"
-    description
-  end
-end
+# End of Ruby Logic. Sinatra routes below
 
 get "/" do
   erb :index
