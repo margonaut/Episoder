@@ -4,3 +4,9 @@
   <input type="text" name="show_name">
   <input type="submit">
 </form>
+
+<ul>
+<% episode_list.each do |episode| %>
+<li><%= episode.title %></li>
+<% end %>
+</ul>

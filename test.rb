@@ -1,18 +1,18 @@
-# require 'rubygems'
+# Preliminary test area for building ruby logic
+
 require 'nokogiri'
 require 'open-uri'
 
-page = Nokogiri::HTML(open("https://en.wikipedia.org/wiki/List_of_Steven_Universe_episodes"))
+# Sets the show being examined with Nokogiri
 
-class Episode
-  attr_reader :title, :number, :description
-  def initialize (title, number, description)
-    @title = title
-    @number = number
-    @description = description
-  end
-end
+# def new_show(name)
+#   url_name = name.split.map(&:capitalize).join('_')
+#   page = Nokogiri::HTML(open("https://en.wikipedia.org/wiki/List_of_#{url_name}_episodes"))
+#   return page
+# end
+# page = new_show("hannibal")
 
+# Seperate method to find episode descriptions without breaking everything
 def find_description(episode)
   unless episode.next_element.nil?
     description = episode.next_element.text
@@ -25,14 +25,47 @@ def find_description(episode)
   end
 end
 
-episode_list = []
-episodes = page.css('tr.vevent')
-episodes.each do |episode|
-  title = (episode > ('.summary')).text
-  number = episode.children[1].text
-  description = find_description(episode)
-  new_episode = Episode.new(title, number, description)
-  episode_list << new_episode
+# Defines Episode Class
+
+class Episode
+  attr_reader :title, :number, :description
+  def initialize (title, number, description)
+    @title = title
+    @number = number
+    @description = description
+  end
 end
 
-puts episode_list[6].description
+# Creates and populates and array of Episode objects from the current show
+def new_show(name)
+  url_name = name.split.map(&:capitalize).join('_')
+  page = Nokogiri::HTML(open("https://en.wikipedia.org/wiki/List_of_#{url_name}_episodes"))
+  episode_list = []
+  episodes = page.css('tr.vevent')
+  episodes.each do |episode|
+    title = (episode > ('.summary')).text
+    number = episode.children[1].text
+    description = find_description(episode)
+    new_episode = Episode.new(title, number, description)
+    episode_list << new_episode
+  end
+  return episode_list
+end
+
+episode_list = new_show("better off ted")
+puts episode_list.count
+
+
+
+
+# episode_list = []
+# episodes = page.css('tr.vevent')
+# episodes.each do |episode|
+#   title = (episode > ('.summary')).text
+#   number = episode.children[1].text
+#   description = find_description(episode)
+#   new_episode = Episode.new(title, number, description)
+#   episode_list << new_episode
+# end
+
+# puts episode_list[6].description

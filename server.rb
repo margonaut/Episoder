@@ -8,7 +8,16 @@ page = Nokogiri::HTML(open("https://en.wikipedia.org/wiki/List_of_Trailer_Park_B
 def new_show(name)
   url_name = name.split.map(&:capitalize).join('_')
   page = Nokogiri::HTML(open("https://en.wikipedia.org/wiki/List_of_#{url_name}_episodes"))
-  return page
+  episode_list = []
+  episodes = page.css('tr.vevent')
+  episodes.each do |episode|
+    title = (episode > ('.summary')).text
+    number = episode.children[1].text
+    description = find_description(episode)
+    new_episode = Episode.new(title, number, description)
+    episode_list << new_episode
+  end
+  return episode_list
 end
 
 class Episode
@@ -32,24 +41,20 @@ def find_description(episode)
   end
 end
 
-episode_list = []
-episodes = page.css('tr.vevent')
-episodes.each do |episode|
-  title = (episode > ('.summary')).text
-  number = episode.children[1].text
-  description = find_description(episode)
-  new_episode = Episode.new(title, number, description)
-  episode_list << new_episode
+get "/" do
+  erb :index
 end
 
-get "/" do
-  erb :index, locals: {episode_list: episode_list}
+get "/show" do
+  # binding.pry
+  erb :show, locals: { episode_list: @episode_list}
 end
 
 post "/show" do
   show_name = params[:show_name]
-  binding.pry
-  redirect "/"
+  @episode_list = new_show(show_name)
+  # binding.pry
+  redirect "/show"
 end
 
 # puts episode_list[6].description
