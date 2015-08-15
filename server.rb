@@ -59,7 +59,6 @@ end
 
 get "/" do
   suggested_shows
-  binding.pry
   erb :index, locals: { suggested_shows: suggested_shows }
 end
 

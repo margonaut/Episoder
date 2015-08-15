@@ -2,6 +2,8 @@
   <h2>Suggested Shows:</h2>
   <hr />
   <div class="link_block">
-    <a href="">Steven Universe</a><a href="">Steven Universe</a><a href="">Steven Universe</a><a href="">Steven Universe</a><a href="">Steven Universe</a><a href="">Steven Universe</a><a href="">Steven Universe</a><a href="">Steven Universe</a><a href="">Steven Universe</a><a href="">Steven Universe</a><a href="">Steven Universe</a><a href="">Steven Universe</a>
+    <% suggested_shows.each do |show| %>
+    <a href="/show/<%= show[:url]  %>"><%= show[:name]  %></a>
+    <% end %>
   </div>
 </main>
