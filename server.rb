@@ -15,6 +15,10 @@ end
 
 # Methods to assist in and populate an array of Episodes objects
 
+def is_i?(string)
+       /\A[-+]?\d+\z/ === string
+end
+
 def find_description(episode)
   unless episode.next_element.nil?
     description = episode.next_element.text
@@ -22,9 +26,15 @@ def find_description(episode)
   if description.nil?
     description = "SOMETHING WEIRD IS HAPPENING HERE"
   end
+  # binding.pry
+  if is_i?(description[1])
+    description = ""
+  end
+  # binding.pry
   unless description.include? "TBA"
     description
   end
+
 end
 
 def new_show(name)
@@ -42,7 +52,7 @@ def new_show(name)
 end
 
 def suggested_shows
-  shows = ["Steven Universe", "Better Off Ted", "Arrow", "Trailer Park Boys", "Hannibal", "Sherlock", "Twin Peaks", "Firefly", "Orphan Black", "Broad City", "Downton Abbey"]
+  shows = ["Steven Universe", "Better Off Ted", "Arrow", "Trailer Park Boys", "Hannibal", "Sherlock", "Twin Peaks", "Firefly", "Orphan Black", "Broad City", "Downton Abbey", "Friends", "Sense8", "American Horror Story", "Arrested Development", "Fringe", "Mad Men", "Scrubs", "The Walking Dead"]
   suggested_shows = []
   shows.each do |show_name|
     show = {}
