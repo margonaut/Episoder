@@ -1,3 +1,4 @@
+require "pry"
 require 'sinatra'
 require 'nokogiri'
 require 'open-uri'
@@ -40,10 +41,26 @@ def new_show(name)
   return episode_list
 end
 
+def suggested_shows
+  shows = ["Steven Universe", "Better Off Ted", "Arrow", "Trailer Park Boys", "Hannibal", "Sherlock", "Twin Peaks"]
+  suggested_shows = []
+  shows.each do |show_name|
+    show = {}
+    name = show_name
+    url = show_name.split.map(&:capitalize).join('_')
+    show[:name] = name
+    show[:url] = url
+    suggested_shows << show
+  end
+  return suggested_shows
+end
+
 # End of Ruby Logic. Sinatra routes below
 
 get "/" do
-  erb :index
+  suggested_shows
+  binding.pry
+  erb :index, locals: { suggested_shows: suggested_shows }
 end
 
 get "/show/:show_name" do
