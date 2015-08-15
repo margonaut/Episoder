@@ -3,8 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <title>Episoder</title>
+  <link rel="stylesheet" href="/style.css" class="css">
 </head>
 <body>
-  <%= yield %>
+  <div class="container">
+    <a href="/">
+    <div class="header">
+      <h1>Episoder</h1>
+    </a>
+      <form action="/show" method="post">
+        <input type="text" name="show_name" placeholder="What show do you want to see?" style="width:85%;">
+        <input type="submit" style="width:14%;">
+      </form>
+    </div>
+    <%= yield %>
+    <footer>
+      See this on GitHub!
+    </footer>
+  </div>
 </body>
 </html>

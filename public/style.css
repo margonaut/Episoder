@@ -1,0 +1,151 @@
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,300,600,400);
+
+/**************Page Structure*******************************/
+/*container
+  main
+    episode
+      episode_header
+        title
+        number
+      description*/
+
+.container {
+  margin: 0 auto;
+  width: 500px;
+  overflow: hidden;
+}
+
+
+/*****************Basic Styling****************************/
+
+html {
+  font-family: 'Open Sans', helvetica, sans-serif;
+  font-size: .9em;
+}
+
+h1 {
+  color: red;
+  font-size: 2.3em;
+  color: #E865D0;
+}
+
+a {
+  text-decoration: none;
+  color:inherit;
+}
+
+h2 {
+  margin-bottom: 5px;
+}
+
+hr {
+  margin: 0 0 10px 0;
+  border: 2px solid #E865D0;
+  border-radius: 2px;
+
+}
+
+.title {
+  font-size: 1.25em;
+  float: left;
+  margin: 0;
+  font-weight: 600;
+}
+
+
+/****************Page Header*****************************/
+
+.header {
+  margin-bottom: 20px;
+}
+
+/***************Episode Elements******************************/
+
+.main {
+}
+
+.episode {
+  margin-bottom: 15px;
+}
+
+.episode_header {
+  /*display: block;*/
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+
+
+/*.title {
+}*/
+
+.number {
+  float: right;
+  font-size: 1.25em;
+}
+
+.description {
+  /*diplay: block;*/
+  text-align: justify;
+
+}
+
+input {
+  font-size: 1em;
+  padding:8px;
+
+
+}
+
+input[type="submit"] {
+  background-color: #E865D0;
+  border: 0;
+  color: #FFF;
+  padding: 9px;
+}
+
+.link_block {
+  font-size: 1.2em;
+}
+
+.link_block a {
+  line-height: 1.4em;
+}
+
+.link_block a:hover {
+  color: #E865D0;
+}
+
+/****************Footer*****************************/
+
+footer {
+  margin-top: 15px;
+  background-color: #E865D0;
+  padding: 10px;
+  color: #FFF;
+  border-radius: 3px;
+}
+
+/**************Fixes*******************************/
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.clearfix {
+  *zoom: 1;
+}
+
+/*********************************************/

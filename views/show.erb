@@ -1,22 +1,8 @@
-<p>And we're live!</p>
-<form action="/show" method="post">
-  <label for="show">What show do you want to see?</label>
-  <input type="text" name="show_name">
-  <input type="submit">
-</form>
-
-<table class="episode_list" border=1>
-  <th>Episode Number
-  </th>
-  <th>Episode Name
-  </th>
+<main>
   <% episode_list.each do |episode| %>
-    <tr>
-      <td class="number"><%= episode.number %></td>
-      <td class="title"><%= episode.title %></td>
-    </tr>
-    <tr>
-      <td class="description" colspan="2"><%= episode.description %></td>
-    </tr>
+  <div class="episode">
+    <div class="episode_header"><h2 class="title"><%= episode.title %></h2><div class="number">Episode <%= episode.number %></div></div>
+    <div class="description"><%= episode.description %></div>
+  </div>
   <% end %>
-</table>
+</main>

@@ -1,12 +1,10 @@
 require 'sinatra'
 require 'nokogiri'
 require 'open-uri'
-require 'pry'
 
 page = Nokogiri::HTML(open("https://en.wikipedia.org/wiki/List_of_Trailer_Park_Boys_episodes"))
 
 def new_show(name)
-  # url_name = name.split.map(&:capitalize).join('_')
   page = Nokogiri::HTML(open("https://en.wikipedia.org/wiki/List_of_#{name}_episodes"))
   episode_list = []
   episodes = page.css('tr.vevent')
@@ -46,18 +44,12 @@ get "/" do
 end
 
 get "/show/:show_name" do
-  # binding.pry
   episode_list = new_show(params[:show_name])
-  # binding.pry
-  # episode_list = [1, 2, 3, 4]
   erb :show, locals: { episode_list: episode_list}
 end
 
 post "/show" do
   show_name = params[:show_name]
   show_name = show_name.split.map(&:capitalize).join('_')
-  # binding.pry
   redirect "/show/#{show_name}"
 end
-
-# puts episode_list[6].description
